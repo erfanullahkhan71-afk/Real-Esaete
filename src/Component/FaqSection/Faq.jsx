@@ -37,7 +37,7 @@ export default function Faq() {
           {/* FAQ Image */}
           <div className="md:w-1/3 mt-10 md:mt-0">
             <img
-              src="/home10.jpg"
+              src="/img4.jpg"
               alt="Property interior"
               className="rounded-xl shadow-lg w-full object-cover"
             />

@@ -1,3 +1,4 @@
+// Three carde section
 import React from "react";
 
 function Section() {
