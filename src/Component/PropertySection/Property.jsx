@@ -41,9 +41,7 @@ function Property() {
           </p>
         </div>
 
-        <button className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-900 transition">
-          See All Properties
-        </button>
+  
       </div>
 
     </section>

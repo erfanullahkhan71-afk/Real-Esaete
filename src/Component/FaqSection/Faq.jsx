@@ -1,5 +1,5 @@
 import React from "react";
-
+// erfan img section
 const faqs = [
   { question: "What types of properties do you sell?", answer: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur alias asperiores labore suscipit, eligendi dignissimos quod ducimus sit rerum et voluptate reprehenderit unde! Ex aut distinctio eligendi adipisci cupiditate veritatis?" },
   { question: "Do I need to hire a real estate agent?", answer: "" },
