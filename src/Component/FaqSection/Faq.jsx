@@ -79,34 +79,40 @@ function Faq() {
           </div>
         </div>
       </section>
-
       {/* TESTIMONIAL */}
-      <section>
-        <h2 className="text-4xl font-extrabold text-center mb-16">
-          What Our Clients Say
-        </h2>
+      <section class="bg- py-16">
+  
+        <h3 class="text-5xl font-extrabold text-center mb-16 text-gray-800 tracking-tight">
+          TESTIMONIALS
+        </h3>
 
-        <div className="flex justify-center">
-          <div className="bg-white p-10 rounded-3xl shadow-xl md:flex gap-8 items-center">
-            <img
-              src={testimonial.image}
-              alt={testimonial.name}
-              className="w-40 h-40 rounded-full object-cover border-4 border-green-200"
-            />
+        <div class="flex justify-center px-4">
+          <div class="bg-green-700 p-10 rounded-3xl shadow-2xl max-w-2xl text-white relative">
+            
+            {/* Quotation Marks */}
+            <span class="absolute top-4 left-4 text-green-500 text-6xl font-serif opacity-75">“</span>
+            <span class="absolute bottom-4 right-4 text-green-500 text-6xl font-serif opacity-75">”</span>
 
-            <div>
-              <p className="italic text-lg mb-4">
-                “{testimonial.feedback}”
-              </p>
-              <p className="font-bold">{testimonial.name}</p>
-              <p className="text-green-600 text-sm">{testimonial.role}</p>
-              <p className="text-sm text-gray-500 mt-2">
-                ⭐ {testimonial.reviews}
-              </p>
+            {/* Image and Text Container */}
+            <div class="flex flex-col items-center text-center">
+                <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-lg mb-6"
+                />
+
+                <div>
+                    <p class="text-lg mb-6 leading-relaxed">
+                        I really like the dresses from the Borcelle Boutique. Nice design, feminine color, soft and comfortable material in addition, at an affordable price I can get a dress with good quality like this. Borcelle is special, thank you.
+                    </p>
+                    <p class="font-bold text-xl">{testimonial.name}</p>
+                    <p class="text-green-300 text-sm">{testimonial.role}</p>
+                </div>
             </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 }
