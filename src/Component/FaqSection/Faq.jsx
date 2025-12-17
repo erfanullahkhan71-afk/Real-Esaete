@@ -90,8 +90,8 @@ function Faq() {
           <div class="bg-green-700 p-10 rounded-3xl shadow-2xl max-w-2xl text-white relative">
             
             {/* Quotation Marks */}
-            <span class="absolute top-4 left-4 text-green-500 text-6xl font-serif opacity-75">“</span>
-            <span class="absolute bottom-4 right-4 text-green-500 text-6xl font-serif opacity-75">”</span>
+            <span class="absolute top-4 left-4 text-white text-6xl font-serif opacity-75">“</span>
+            <span class="absolute bottom-4 right-4 text-white text-6xl font-serif opacity-75">”</span>
 
             {/* Image and Text Container */}
             <div class="flex flex-col items-center text-center">
