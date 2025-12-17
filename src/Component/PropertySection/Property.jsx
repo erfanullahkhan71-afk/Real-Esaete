@@ -20,19 +20,19 @@ function Property() {
   const [openMap, setOpenMap] = useState(false);
 
   return (
-    <section className="w-full py-20 px-6 lg:px-20">
+    <section className="w-full py-20 px-6 lg:px-20 -z-0">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
 
         {/* MAP PREVIEW */}
         <div
           onClick={() => setOpenMap(true)}
-          className="relative cursor-pointer rounded-3xl overflow-hidden shadow-xl"
+          className=" cursor-pointer rounded-3xl overflow-hidden shadow-xl"
         >
           <MapContainer
             center={[40.7128, -74.006]}
             zoom={3}
             scrollWheelZoom={false}
-            className="w-full h-[420px]"
+            className="w-full h-[420px] -z-0"
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {properties.map((p) => (
@@ -46,11 +46,7 @@ function Property() {
             ))}
           </MapContainer>
 
-          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-            <span className="bg-white px-6 py-3 rounded-full font-medium">
-              Open Map
-            </span>
-          </div>
+        
         </div>
 
         {/* TEXT */}
