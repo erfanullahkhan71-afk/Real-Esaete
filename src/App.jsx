@@ -10,7 +10,8 @@ import Prop from "./Component/PropSection/Prop";
 import Faq from "./Component/FaqSection/Faq";
 import Foter from "./Component/Footer/Foter";
 
-import About from "./Component/About";
+
+import About from "./Component/About/About";
 import PropertyList from "./Component/PropertyList/PropertyList";
 import Contact from "./Component/Contact/Contact";
 import SignUp from "./Component/SignUp/SignUp";

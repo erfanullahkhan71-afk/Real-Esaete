@@ -1,73 +1,152 @@
-import React from "react";
+import React, { useState } from "react";
 
 const properties = [
   {
-    id: 1,
     title: "The Pinnacle at Highland Park",
-    price: "$3,567,980",
+    price: "$3,567,980.00",
     location: "123 Maple Street, New York",
     beds: 5,
     baths: 2,
-    img: "/img4.jpg",
+    img: "/download (11).jpeg",
   },
   {
-    id: 2,
-    title: "Modern Luxury Villa",
-    price: "$2,408,980",
+    title: "The Pinnacle at Highland Park",
+    price: "$2,408,980.39",
     location: "789 Forest Lane, Denver CO",
     beds: 5,
     baths: 2,
-    img: "/img5.jpg",
+    img: "/download (12).jpeg",
   },
   {
-    id: 3,
-    title: "Serenity Estate",
-    price: "$4,567,045",
+    title: "The Pinnacle at Highland Park",
+    price: "$4,567,045.00",
     location: "123 Serenity Drive, Austin TX",
     beds: 6,
     baths: 3,
-    img: "/img4.jpg",
+    img: "/download (15).jpeg",
+  },
+  {
+    title: "The Pinnacle at Highland Park",
+    price: "$3,200,000.00",
+    location: "Miami Beach, FL",
+    beds: 4,
+    baths: 3,
+    img: "/download (17).jpeg",
+  },
+  {
+    title: "The Pinnacle at Highland Park",
+    price: "$2,900,000.00",
+    location: "Los Angeles, CA",
+    beds: 5,
+    baths: 4,
+    img: "/download (16).jpeg",
+  },  {
+    title: "The Pinnacle at Highland Park",
+    price: "$2,800,000",
+    location: "Los Angeles, CA",
+    beds: 5,
+    baths: 4,
+    img: "/download (18).jpeg",
+  },
+
+
+
+
+
+
+  {
+    title: "The Pinnacle at Highland Park",
+    price: "$3,00000",
+    location: "Miami Beach, FL",
+    beds: 4,
+    baths: 3,
+    img: "/download (19).jpeg",
+  },
+  {
+    title: "The Pinnacle at Highland Park",
+    price: "$4,,000.00",
+    location: "Los Angeles, CA",
+    beds: 5,
+    baths: 4,
+    img: "/download (20).jpeg",
+  },  {
+    title: "The Pinnacle at Highland Park",
+    price: "$3,89,000",
+    location: "Los Angeles, CA",
+    beds: 5,
+    baths: 4,
+    img: "/download (21).jpeg",
   },
 ];
 
-function Prop() {
-  return (
-    <div className="w-full py-16 px-6 lg:px-20 bg-gray-50">
-      <h2 className="text-4xl font-bold text-green-700 text-center mb-12">
-        Explore Our Properties
-      </h2>
+function PropertyList() {
+  const [selectedCard, setSelectedCard] = useState(null);
 
-      <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-        {properties.map((property) => (
+  /* ================= DETAILS VIEW ================= */
+  if (selectedCard) {
+    return (
+      <div className="max-w-6xl mx-auto p-6 lg:p-12">
+        <button
+          onClick={() => setSelectedCard(null)}
+          className="mb-6 text-blue-600 font-medium"
+        >
+          ← Back
+        </button>
+
+        <div className="grid lg:grid-cols-2 gap-10">
+          <img
+            src={selectedCard.img}
+            alt={selectedCard.title}
+            className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover rounded-3xl"
+          />
+
+          <div className="flex flex-col justify-center gap-4">
+            <h1 className="text-3xl lg:text-4xl font-bold">
+              {selectedCard.title}
+            </h1>
+
+            <p className="text-2xl text-green-600 font-semibold">
+              {selectedCard.price}
+            </p>
+
+            <p className="text-gray-600">
+              📍 {selectedCard.location}
+            </p>
+
+            <div className="flex gap-6 mt-4 text-lg">
+              <span>🛏 {selectedCard.beds} Beds</span>
+              <span>🛁 {selectedCard.baths} Baths</span>
+            </div>
+
+            <button className="mt-6 w-full sm:w-fit px-8 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition">
+              Contact Agent
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ================= CARDS VIEW ================= */
+  return (
+    <div className="w-full py-12 px-6 lg:px-16">
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {properties.map((property, index) => (
           <div
-            key={property.id}
-            className="relative group rounded-3xl overflow-hidden shadow-lg cursor-pointer"
+            key={index}
+            onClick={() => setSelectedCard(property)}
+            className="cursor-pointer bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden"
           >
-            {/* Property Image */}
             <img
               src={property.img}
               alt={property.title}
-              className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-64 object-cover"
             />
 
-            {/* Overlay info on hover */}
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-              <h3 className="text-white text-2xl font-bold mb-2">{property.title}</h3>
-              <p className="text-white font-semibold mb-1">{property.price}</p>
-              <p className="text-gray-200 text-sm mb-2">{property.location}</p>
-              <div className="flex gap-4 text-gray-200 text-sm">
-                <span>{property.beds} Beds</span>
-                <span>{property.baths} Baths</span>
-              </div>
-              <button className="mt-4 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-full transition duration-300 w-full">
-                View Details
-              </button>
-            </div>
-
-            {/* Static info below image for quick view */}
-            <div className="absolute bottom-0 left-0 bg-white/80 backdrop-blur-md w-full p-4 flex justify-between items-center">
-              <p className="text-gray-800 font-semibold">{property.title}</p>
-              <p className="text-green-700 font-bold">{property.price}</p>
+            <div className="p-5">
+              <h3 className="text-lg font-semibold">{property.title}</h3>
+              <p className="text-xl font-bold">{property.price}</p>
+              <p className="text-gray-500 text-sm">{property.location}</p>
             </div>
           </div>
         ))}
@@ -76,4 +155,4 @@ function Prop() {
   );
 }
 
-export default Prop;
+export default PropertyList;

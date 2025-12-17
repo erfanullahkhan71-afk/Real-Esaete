@@ -1,60 +1,116 @@
+import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
 function Foter() {
   const navigate = useNavigate();
-
+  
   const navLinks = [
     { label: "Home", to: "/" },
     { label: "About Us", to: "/about" },
-    { label: "Property List", to: "/property" },
-    { label: "Contact Us", to: "/contact" },
+    { label: "Properties", to: "/property" },
+    { label: "Contact", to: "/contact" },
   ];
-
   return (
-    <footer className="w-full bg-gray-100 py-10 px-6 md:px-20 border-t mt-20">
-      
-      {/* Top Section */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <div>
-          <h3 className="text-xl font-semibold">
-            Discover Nature's Wonders<br />With Expert Guidance
-          </h3>
+     <footer className="w-full bg-gradient-to-r from-green-700 to-blue-900 text-white py-20 px-6 md:px-20">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 items-start">
+        {/* Branding */}
+        <div className="flex flex-col gap-4">
+          <h2
+            className="text-3xl font-bold cursor-pointer hover:text-gray-100 transition"
+            onClick={() => navigate("/")}
+          >
+            EverGreen
+          </h2>
+          <p className="text-gray-100/80">
+            Explore the best properties with expert guidance.
+          </p>
+          <p className="text-gray-100/70 text-sm">Erfanullah</p>
+          <p className="text-gray-100/70 text-sm">0748948465</p>
         </div>
-        <div className="text-gray-700 text-sm">
-          <p>12345 Erafn</p>
-          <p>0148948465</p>
+
+        {/* Navigation */}
+        <div className="flex flex-col gap-3">
+          <h4 className="font-semibold mb-3">Quick Links</h4>
+          <ul className="flex flex-col gap-2">
+            {navLinks.map((link, i) => (
+              <li key={i} className="group relative cursor-pointer">
+                <Link
+                  to={link.to}
+                  className="hover:text-gray-200 transition font-sans"
+                >
+                  {link.label}
+                </Link>
+                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-white rounded-full transition-all group-hover:w-20"></span>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
 
-      {/* Bottom Navigation */}
-      <div className="flex flex-col md:flex-row justify-between items-center mt-10 border-t pt-6 text-sm text-gray-600">
+        {/* Social & Newsletter */}
+        <div className="flex flex-col gap-4">
+          <h4 className="font-semibold mb-3">Stay Connected</h4>
 
-        {/* Navigation Links */}
-        <ul className="hidden md:flex gap-10 text-gray-700 font-semibold">
-          {navLinks.map((link, i) => (
-            <li key={i} className="cursor-pointer relative group">
-              <Link to={link.to}>{link.label}</Link>
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-green-500 rounded-full transition-all group-hover:w-full"></span>
-            </li>
-          ))}
-        </ul>
+<div className="flex gap-3">
+  <div className="w-10 h-10 bg-white/20 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/40 transition">
+    <FaFacebookF />
+  </div>
+  <div className="w-10 h-10 bg-white/20 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/40 transition">
+    <FaTwitter />
+  </div>
+  <div className="w-10 h-10 bg-white/20 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/40 transition">
+    <FaInstagram />
+  </div>
+</div>
 
-        {/* Logo */}
-        <div
-          className="font-semibold text-lg mt-4 md:mt-0 cursor-pointer"
-          onClick={() => navigate("/")}
-        >
-          EverGreen
+          <input
+            type="email"
+            placeholder="Your email"
+            className="mt-4 p-3 rounded-xl border border-white/40 bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/70"
+          />
         </div>
       </div>
 
       {/* Copyright */}
-      <div className="mt-6 text-xs text-gray-500">
+      <div className="mt-16 text-center text-white/60 text-sm">
         © 2025 EverGreen. All rights reserved.
       </div>
     </footer>
-  );
+  )
 }
 
-export default Foter;
+export default Foter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
+

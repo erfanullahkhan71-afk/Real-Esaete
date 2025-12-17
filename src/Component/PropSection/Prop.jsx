@@ -1,57 +1,127 @@
-// Carde section
-import React from "react";
+import React, { useState } from "react";
 
 const properties = [
-  { id: 1, title: "The Pinnacle at Highland Park", price: "$3,567,980.00", location: "123 Maple Street, New York", beds: 5, baths: 2, img: "/img4.jpg" },
-  { id: 2, title: "The Pinnacle at Highland Park", price: "$2,408,980.39", location: "789 Forest Lane, Denver CO", beds: 5, baths: 2, img: "/img5.jpg" },
-  { id: 3, title: "The Pinnacle at Highland Park", price: "$4,567,045.00", location: "123 Serenity Drive, Austin TX", beds: 6, baths: 3, img: "/img6.jpg" },
-  { id: 4, title: "The Pinnacle at Highland Park", price: "$3,567,980.00", location: "123 Maple Street, New York", beds: 5, baths: 2, img: "/img7.jpg" },
-  { id: 5, title: "The Pinnacle at Highland Park", price: "$2,408,980.39", location: "789 Forest Lane, Denver CO", beds: 5, baths: 2, img: "/img3.jpg" },
-  { id: 6, title: "The Pinnacle at Highland Park", price: "$4,567,045.00", location: "123 Serenity Drive, Austin TX", beds: 6, baths: 3, img: "/img9.jpg" },
+  {
+    id: 1,
+    title: "The Pinnacle at Highland Park",
+    price: "$3,567,980.00",
+    location: "123 Maple Street, New York",
+    beds: 5,
+    baths: 2,
+    img: "/download (11).jpeg",
+  },
+  {
+    id: 2,
+    title: "The Pinnacle at Highland Park",
+    price: "$2,408,980.39",
+    location: "789 Forest Lane, Denver CO",
+    beds: 5,
+    baths: 2,
+    img: "/download (12).jpeg",
+  },
+  {
+    id: 3,
+    title: "The Pinnacle at Highland Park",
+    price: "$4,567,045.00",
+    location: "123 Serenity Drive, Austin TX",
+    beds: 6,
+    baths: 3,
+    img: "/download (13).jpeg",
+  },
 ];
 
 function Prop() {
+  const [selected, setSelected] = useState(null);
+
   return (
-    <div className="w-full py-12 px-6 lg:px-16">
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {properties.map((property) => (
-          <div
-            key={property.id}
-            className="bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden"
-          >
-            {/* Image */}
-            <div className="relative">
-              <img
-                src={property.img}
-                alt={property.title}
-                className="w-full h-64 object-cover"
-              />
-              <span className="absolute top-3 left-3 bg-white px-3 py-1 rounded-full text-sm font-medium shadow">
-                For Sale
-              </span>
-            </div>
+    <section className="w-full py-20 px-6 lg:px-16">
 
-            {/* Content */}
-            <div className="p-5 flex flex-col gap-2">
-              {/* Details */}
-              <div className="text-gray-600 text-sm flex items-center gap-4">
-                <span>{property.beds} Bedrooms</span>
-                <span>{property.baths} Bathrooms</span>
+      {/* PROPERTY LIST */}
+      {!selected && (
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Featured Homes for Sale
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {properties.map((p) => (
+              <div
+                key={p.id}
+                className="rounded-3xl overflow-hidden border border-gray-200"
+              >
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  className="w-full h-64 object-cover"
+                />
+
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold">{p.title}</h3>
+                  <p className="text-sm text-gray-500">📍 {p.location}</p>
+
+                  <p className="text-xl font-bold text-green-600 my-3">
+                    {p.price}
+                  </p>
+
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>🛏 {p.beds} Beds</span>
+                    <span>🛁 {p.baths} Baths</span>
+                  </div>
+
+                  <button
+                    onClick={() => setSelected(p)}
+                    className="mt-6 w-full py-3 rounded-xl bg-green-600 text-white"
+                  >
+                    View Details
+                  </button>
+                </div>
               </div>
+            ))}
+          </div>
+        </div>
+      )}
 
-              {/* Title */}
-              <h3 className="text-lg font-semibold">{property.title}</h3>
+      {/* DETAILS MODAL */}
+      {selected && (
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
+          <div className="bg-white max-w-5xl w-full rounded-3xl relative">
 
-              {/* Price */}
-              <p className="text-xl font-bold">{property.price}</p>
+            <button
+              onClick={() => setSelected(null)}
+              className="absolute top-4 right-4 text-xl font-bold"
+            >
+              ✕
+            </button>
 
-              {/* Location */}
-              <p className="text-gray-500 text-sm">{property.location}</p>
+            <div className="grid lg:grid-cols-2">
+              <img
+                src={selected.img}
+                alt={selected.title}
+                className="w-full h-80 object-cover"
+              />
+
+              <div className="p-10">
+                <h1 className="text-3xl font-bold">{selected.title}</h1>
+                <p className="text-2xl text-green-600 my-2">
+                  {selected.price}
+                </p>
+                <p className="text-gray-600">📍 {selected.location}</p>
+
+                <div className="flex gap-6 mt-6">
+                  <span>🛏 {selected.beds} Beds</span>
+                  <span>🛁 {selected.baths} Baths</span>
+                </div>
+
+                <button className="mt-8 px-8 py-4 bg-green-600 text-white rounded-xl">
+                  Contact Agent
+                </button>
+              </div>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      )}
+
+    </section>
   );
 }
 
