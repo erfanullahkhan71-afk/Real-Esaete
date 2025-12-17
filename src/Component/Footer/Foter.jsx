@@ -13,7 +13,7 @@ function Foter() {
     { label: "Contact", to: "/contact" },
   ];
   return (
-     <footer className="w-full bg-gradient-to-r from-green-700 to-blue-900 text-white py-20 px-6 md:px-20">
+     <footer className="w-full bg-gradient-to-r from-green-500 to-green-800 text-white py-20 px-6 md:px-20">
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 items-start">
         {/* Branding */}
         <div className="flex flex-col gap-4">

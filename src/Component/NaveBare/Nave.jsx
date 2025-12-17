@@ -18,7 +18,7 @@ function Nave() {
         
         {/* Logo */}
         <h1
-          className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-green-400 via-teal-400 to-blue-500 bg-clip-text text-transparent cursor-pointer hover:scale-105 transition-transform duration-300"
+          className="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-green-400 via-teal-400 to-green-800 bg-clip-text text-transparent cursor-pointer hover:scale-105 transition-transform duration-300"
           onClick={() => navigate("/")}
         >
           EverGreen
@@ -34,13 +34,13 @@ function Nave() {
               >
                 {item.label}
               </Link>
-              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-full transition-all group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 w-0 h-1 bg-gradient-to-r from-green-400 to-green-800 rounded-full transition-all group-hover:w-full"></span>
             </li>
           ))}
           <li>
             <button
               onClick={() => navigate("/signup")}
-              className="ml-4 px-6 py-2 rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold shadow-md hover:scale-105 transition-transform duration-300"
+              className="ml-4 px-6 py-2 rounded-full bg-gradient-to-r from-green-400 to-green-800 text-white font-semibold shadow-md hover:scale-105 transition-transform duration-300"
             >
               Sign Up
             </button>
@@ -88,7 +88,7 @@ function Nave() {
                 navigate("/signup");
                 setIsOpen(false);
               }}
-              className="w-full px-6 py-2 rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold shadow-md hover:scale-105 transition-transform duration-300"
+              className="w-full px-6 py-2 rounded-full bg-gradient-to-r from-green-400 to-green-800 text-white font-semibold shadow-md hover:scale-105 transition-transform duration-300"
             >
               Sign Up
             </button>
