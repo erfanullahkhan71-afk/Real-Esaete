@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Foter from "../Footer/Foter";
 
 const properties = [
   {
@@ -129,7 +130,8 @@ function PropertyList() {
 
   /* ================= CARDS VIEW ================= */
   return (
-    <div className="w-full py-12 px-6 lg:px-16">
+  <div>
+      <div className="w-full py-12 px-6 lg:px-16">
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {properties.map((property, index) => (
           <div
@@ -152,6 +154,8 @@ function PropertyList() {
         ))}
       </div>
     </div>
+      <Foter/>
+  </div>
   );
 }
 

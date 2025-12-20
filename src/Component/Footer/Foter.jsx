@@ -1,20 +1,20 @@
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
-import React from "react";
+import { FaFacebookF, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-
 
 function Foter() {
   const navigate = useNavigate();
-  
+
   const navLinks = [
     { label: "Home", to: "/" },
     { label: "About Us", to: "/about" },
     { label: "Properties", to: "/property" },
     { label: "Contact", to: "/contact" },
   ];
+
   return (
-     <footer className="w-full bg-gradient-to-r from-green-500 to-green-800 text-white py-20 px-6 md:px-20">
+    <footer className="w-full bg-gradient-to-r from-green-500 to-green-800 text-white py-20 px-6 md:px-20">
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12 items-start">
+
         {/* Branding */}
         <div className="flex flex-col gap-4">
           <h2
@@ -23,9 +23,11 @@ function Foter() {
           >
             EverGreen
           </h2>
+
           <p className="text-gray-100/80">
             Explore the best properties with expert guidance.
           </p>
+
           <p className="text-gray-100/70 text-sm">Erfanullah</p>
           <p className="text-gray-100/70 text-sm">0748948465</p>
         </div>
@@ -35,7 +37,7 @@ function Foter() {
           <h4 className="font-semibold mb-3">Quick Links</h4>
           <ul className="flex flex-col gap-2">
             {navLinks.map((link, i) => (
-              <li key={i} className="group relative cursor-pointer">
+              <li key={i} className="group relative">
                 <Link
                   to={link.to}
                   className="hover:text-gray-200 transition font-sans"
@@ -52,17 +54,35 @@ function Foter() {
         <div className="flex flex-col gap-4">
           <h4 className="font-semibold mb-3">Stay Connected</h4>
 
-<div className="flex gap-3">
-  <div className="w-10 h-10 bg-white/20 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/40 transition">
-    <FaFacebookF />
-  </div>
-  <div className="w-10 h-10 bg-white/20 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/40 transition">
-    <FaTwitter />
-  </div>
-  <div className="w-10 h-10 bg-white/20 flex items-center justify-center rounded-full cursor-pointer hover:bg-white/40 transition">
-    <FaInstagram />
-  </div>
-</div>
+          {/* Social Icons */}
+          <div className="flex gap-4">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-blue-600 transition"
+            >
+              <FaFacebookF />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/feed/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-blue-700 transition"
+            >
+              <FaLinkedinIn />
+            </a>
+
+            <a
+              href="https://wa.me/93748948465?text=Hello%20Erfanullah!."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/20 hover:bg-green-600 transition"
+            >
+              <FaWhatsapp />
+            </a>
+          </div>
 
           <input
             type="email"
@@ -77,40 +97,7 @@ function Foter() {
         © 2025 EverGreen. All rights reserved.
       </div>
     </footer>
-  )
+  );
 }
 
-export default Foter
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-  
-
+export default Foter;

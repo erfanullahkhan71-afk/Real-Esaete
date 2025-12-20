@@ -1,4 +1,7 @@
 import React from "react";
+import Foter from "../Footer/Foter";
+
+
 
 function About() {
   return (
@@ -89,7 +92,7 @@ function About() {
           Contact us today and let our team guide you to the perfect property!
         </p>
       </section>
-
+  <Foter/>
     </div>
   );
 }
