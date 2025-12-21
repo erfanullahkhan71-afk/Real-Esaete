@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MapPin, DollarSign, Home } from "lucide-react";
+import { MapPin, DollarSign, Home, Phone, Mail, User } from "lucide-react";
 
 const houses = [
   {
@@ -30,6 +30,7 @@ const houses = [
 
 export default function Section() {
   const [selectedHouse, setSelectedHouse] = useState(null);
+  const [showOwner, setShowOwner] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = selectedHouse ? "hidden" : "auto";
@@ -37,13 +38,9 @@ export default function Section() {
 
   return (
     <>
-      {/* FULL WIDTH BACKGROUND */}
+      {/* LIST SECTION */}
       <section className="w-full bg-black text-white pt-24 pb-20">
-        
-        {/* CENTERED CONTAINER */}
         <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
-
-          {/* HEADER */}
           <div className="mb-14">
             <h2 className="text-3xl lg:text-4xl font-bold">
               Featured <span className="text-yellow-500">Properties</span>
@@ -53,26 +50,26 @@ export default function Section() {
             </p>
           </div>
 
-          {/* GRID */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {houses.map((house) => (
               <div
                 key={house.id}
-                onClick={() => setSelectedHouse(house)}
+                onClick={() => {
+                  setSelectedHouse(house);
+                  setShowOwner(false);
+                }}
                 className="bg-gradient-to-b from-gray-900 to-gray-950
                            border border-gray-800 rounded-2xl overflow-hidden
                            shadow-lg hover:shadow-yellow-500/30
                            transform hover:-translate-y-1 transition
                            cursor-pointer flex flex-col h-full"
               >
-                {/* IMAGE */}
                 <img
                   src={house.img}
                   alt={house.title}
                   className="h-60 lg:h-72 w-full object-cover"
                 />
 
-                {/* CONTENT */}
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-semibold mb-2">
                     {house.title}
@@ -105,7 +102,10 @@ export default function Section() {
       {/* MODAL */}
       {selectedHouse && (
         <div
-          onClick={() => setSelectedHouse(null)}
+          onClick={() => {
+            setSelectedHouse(null);
+            setShowOwner(false);
+          }}
           className="fixed inset-0 bg-black/80 z-50
                      flex items-center justify-center px-6"
         >
@@ -115,23 +115,23 @@ export default function Section() {
                        grid grid-cols-1 md:grid-cols-2
                        max-h-[85vh] overflow-y-auto relative"
           >
-            {/* CLOSE */}
             <button
-              onClick={() => setSelectedHouse(null)}
+              onClick={() => {
+                setSelectedHouse(null);
+                setShowOwner(false);
+              }}
               className="absolute top-4 right-4 text-2xl
                          text-yellow-500 hover:text-yellow-400"
             >
               ✕
             </button>
 
-            {/* IMAGE */}
             <img
               src={selectedHouse.img}
               alt={selectedHouse.title}
               className="w-full h-72 md:h-full object-cover"
             />
 
-            {/* INFO */}
             <div className="p-8">
               <h3 className="text-3xl font-bold mb-4">
                 {selectedHouse.title}
@@ -151,13 +151,39 @@ export default function Section() {
                 {selectedHouse.description}
               </p>
 
+              {/* CONTACT OWNER BUTTON */}
               <button
+                onClick={() => setShowOwner(!showOwner)}
                 className="w-full py-3 bg-yellow-500
                            text-black font-semibold rounded-xl
                            hover:bg-yellow-400 transition"
               >
                 Contact Owner
               </button>
+
+              {/* OWNER DETAILS */}
+              {showOwner && (
+                <div className="mt-5 p-5 bg-black border border-yellow-500 rounded-xl">
+                  <h4 className="text-lg font-bold text-yellow-500 mb-3">
+                    Owner Information
+                  </h4>
+
+                  <p className="flex items-center gap-2 text-gray-300">
+                    <User className="w-4 h-4 text-yellow-600" />
+                    Erfanullah Rahmatzai
+                  </p>
+
+                  <p className="flex items-center gap-2 text-gray-300">
+                    <Phone className="w-4 h-4 text-yellow-600" />
+                    +93 748 948 465
+                  </p>
+
+                  <p className="flex items-center gap-2 text-gray-300">
+                    <Mail className="w-4 h-4 text-yellow-600" />
+                    erfan@rentals.com
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
