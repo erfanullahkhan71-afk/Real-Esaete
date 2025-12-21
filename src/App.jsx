@@ -1,4 +1,4 @@
-// section5 testmonel erfan img
+// App.js (Main routing file, no color changes needed)
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -19,6 +19,7 @@ import SignUp from "./Component/SignUp/SignUp";
 export default function App() {
   return (
     <div >
+      {/* Nave is styled with Black & Gold theme */}
       <Nave />
 
       <Routes>
@@ -26,6 +27,7 @@ export default function App() {
           path="/"
           element={
             <>
+              {/* These components are all styled with Black & Gold theme */}
               <Hero />
               <Section />
               <Property />
@@ -36,6 +38,7 @@ export default function App() {
           }
         />
 
+        {/* These components are all styled with Black & Gold theme */}
         <Route path="/about" element={<About />} />
         <Route path="/property" element={<PropertyList />} />
         <Route path="/contact" element={<Contact />} />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { MapPin, DollarSign, Home } from "lucide-react";
 
 const houses = [
   {
@@ -27,7 +28,7 @@ const houses = [
   },
 ];
 
-function Section() {
+export default function Section() {
   const [selectedHouse, setSelectedHouse] = useState(null);
 
   useEffect(() => {
@@ -35,92 +36,132 @@ function Section() {
   }, [selectedHouse]);
 
   return (
-    <section className="w-full max-w-7xl mx-auto mt-24 px-6">
+    <>
+      {/* FULL WIDTH BACKGROUND */}
+      <section className="w-full bg-black text-white pt-24 pb-20">
+        
+        {/* CENTERED CONTAINER */}
+        <div className="max-w-screen-xl mx-auto px-6 lg:px-10">
 
-      {/* HEADER */}
-      <div className="mb-12">
-        <h2 className="text-4xl font-bold">Featured Properties</h2>
-        <p className="text-gray-600 mt-2">
-          Find your dream home from our curated selection
-        </p>
-      </div>
-
-      {/* CARDS */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {houses.map((house) => (
-          <div
-            key={house.id}
-            className="rounded-3xl overflow-hidden bg-white border"
-          >
-            <img
-              src={house.img}
-              alt={house.title}
-              className="h-64 w-full object-cover"
-            />
-
-            <div className="p-6">
-              <h3 className="text-xl font-semibold">{house.title}</h3>
-              <p className="text-sm text-gray-500">📍 {house.location}</p>
-              <p className="text-lg font-bold text-green-600 mt-3">
-                {house.price}
-              </p>
-
-              <button
-                onClick={() => setSelectedHouse(house)}
-                className="mt-5 w-full py-3 rounded-xl bg-green-600 text-white"
-              >
-                View Details
-              </button>
-            </div>
+          {/* HEADER */}
+          <div className="mb-14">
+            <h2 className="text-3xl lg:text-4xl font-bold">
+              Featured <span className="text-yellow-500">Properties</span>
+            </h2>
+            <p className="text-gray-400 mt-2">
+              Find your dream home from our curated selection
+            </p>
           </div>
-        ))}
-      </div>
+
+          {/* GRID */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            {houses.map((house) => (
+              <div
+                key={house.id}
+                onClick={() => setSelectedHouse(house)}
+                className="bg-gradient-to-b from-gray-900 to-gray-950
+                           border border-gray-800 rounded-2xl overflow-hidden
+                           shadow-lg hover:shadow-yellow-500/30
+                           transform hover:-translate-y-1 transition
+                           cursor-pointer flex flex-col h-full"
+              >
+                {/* IMAGE */}
+                <img
+                  src={house.img}
+                  alt={house.title}
+                  className="h-60 lg:h-72 w-full object-cover"
+                />
+
+                {/* CONTENT */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-semibold mb-2">
+                    {house.title}
+                  </h3>
+
+                  <p className="text-sm text-gray-400 flex items-center">
+                    <MapPin className="w-4 h-4 mr-2 text-yellow-600" />
+                    {house.location}
+                  </p>
+
+                  <p className="text-lg font-bold text-yellow-500 mt-3 flex items-center">
+                    <DollarSign className="w-4 h-4 mr-1" />
+                    {house.price}
+                  </p>
+
+                  <button
+                    className="mt-auto w-full py-3 rounded-xl
+                               bg-yellow-500 text-black font-semibold
+                               hover:bg-yellow-400 transition"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* MODAL */}
       {selectedHouse && (
         <div
-          className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center px-4"
           onClick={() => setSelectedHouse(null)}
+          className="fixed inset-0 bg-black/80 z-50
+                     flex items-center justify-center px-6"
         >
           <div
-            className="bg-white max-w-5xl w-full rounded-3xl overflow-hidden grid md:grid-cols-2 relative"
             onClick={(e) => e.stopPropagation()}
+            className="bg-gray-900 rounded-2xl max-w-6xl w-full
+                       grid grid-cols-1 md:grid-cols-2
+                       max-h-[85vh] overflow-y-auto relative"
           >
+            {/* CLOSE */}
             <button
               onClick={() => setSelectedHouse(null)}
-              className="absolute top-4 right-4 text-xl font-bold"
+              className="absolute top-4 right-4 text-2xl
+                         text-yellow-500 hover:text-yellow-400"
             >
               ✕
             </button>
 
+            {/* IMAGE */}
             <img
               src={selectedHouse.img}
               alt={selectedHouse.title}
-              className="w-full h-80 md:h-full object-cover"
+              className="w-full h-72 md:h-full object-cover"
             />
 
+            {/* INFO */}
             <div className="p-8">
-              <h3 className="text-3xl font-bold">{selectedHouse.title}</h3>
-              <p className="text-2xl text-green-600 my-2">
+              <h3 className="text-3xl font-bold mb-4">
+                {selectedHouse.title}
+              </h3>
+
+              <p className="text-2xl text-yellow-500 mb-3">
                 {selectedHouse.price}
               </p>
-              <p className="text-gray-600 mb-4">
-                📍 {selectedHouse.location}
+
+              <p className="text-gray-400 mb-4 flex items-center">
+                <MapPin className="w-4 h-4 mr-2 text-yellow-600" />
+                {selectedHouse.location}
               </p>
-              <p className="text-gray-700 mb-6">
+
+              <p className="text-gray-300 mb-6 flex items-center">
+                <Home className="w-4 h-4 mr-2 text-yellow-600" />
                 {selectedHouse.description}
               </p>
 
-              <button className="px-6 py-3 bg-green-600 text-white rounded-xl">
+              <button
+                className="w-full py-3 bg-yellow-500
+                           text-black font-semibold rounded-xl
+                           hover:bg-yellow-400 transition"
+              >
                 Contact Owner
               </button>
             </div>
           </div>
         </div>
       )}
-
-    </section>
+    </>
   );
 }
-
-export default Section;

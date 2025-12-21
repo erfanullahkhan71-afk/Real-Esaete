@@ -1,79 +1,77 @@
 import React, { useState } from "react";
 import Foter from "../Footer/Foter";
+import { FaLocationDot } from "react-icons/fa6";
+import { FaArrowLeft } from "react-icons/fa";
 
 const properties = [
   {
     title: "The Pinnacle at Highland Park",
-    price: "$3,567,980.00",
-    location: "123 Maple Street, New York",
+    price: "$930,000", // Formatted price for display
+    location: "Kabul, Afghanistan",
     beds: 5,
     baths: 2,
     img: "/download (11).jpeg",
   },
   {
     title: "The Pinnacle at Highland Park",
-    price: "$2,408,980.39",
-    location: "789 Forest Lane, Denver CO",
+    price: "$890,000",
+    location: "Herat, Afghanistan",
     beds: 5,
     baths: 2,
     img: "/download (12).jpeg",
   },
   {
     title: "The Pinnacle at Highland Park",
-    price: "$4,567,045.00",
-    location: "123 Serenity Drive, Austin TX",
+    price: "$1,200,000",
+    location: "Mazar-e-Sharif, Afghanistan",
     beds: 6,
     baths: 3,
     img: "/download (15).jpeg",
   },
   {
     title: "The Pinnacle at Highland Park",
-    price: "$3,200,000.00",
-    location: "Miami Beach, FL",
+    price: "$1,500,000",
+    location: "Kandahar, Afghanistan",
     beds: 4,
     baths: 3,
     img: "/download (17).jpeg",
   },
   {
     title: "The Pinnacle at Highland Park",
-    price: "$2,900,000.00",
-    location: "Los Angeles, CA",
+    price: "$1,122,000",
+    location: "Jalalabad, Afghanistan",
     beds: 5,
     baths: 4,
     img: "/download (16).jpeg",
-  },  {
+  },
+  {
     title: "The Pinnacle at Highland Park",
-    price: "$2,800,000",
-    location: "Los Angeles, CA",
+    price: "$599,000",
+    location: "Kunduz, Afghanistan",
     beds: 5,
     baths: 4,
     img: "/download (18).jpeg",
   },
-
-
-
-
-
-
   {
     title: "The Pinnacle at Highland Park",
-    price: "$3,00000",
-    location: "Miami Beach, FL",
+    price: "$300,000",
+    location: "Ghazni, Afghanistan",
     beds: 4,
     baths: 3,
     img: "/download (19).jpeg",
   },
   {
     title: "The Pinnacle at Highland Park",
-    price: "$4,,000.00",
-    location: "Los Angeles, CA",
+    price: "$400,000",
+    location: "Bamyan, Afghanistan",
     beds: 5,
     baths: 4,
     img: "/download (20).jpeg",
-  },  {
+  },
+  {
     title: "The Pinnacle at Highland Park",
-    price: "$3,89,000",
-    location: "Los Angeles, CA",
+    price: "$700,000",
+    location: "Faizabad, Afghanistan",
     beds: 5,
     baths: 4,
     img: "/download (21).jpeg",
@@ -86,43 +84,58 @@ function PropertyList() {
   /* ================= DETAILS VIEW ================= */
   if (selectedCard) {
     return (
-      <div className="max-w-6xl mx-auto p-6 lg:p-12">
-        <button
-          onClick={() => setSelectedCard(null)}
-          className="mb-6 text-blue-600 font-medium"
-        >
-          ← Back
-        </button>
+      // Main container uses the dark theme background
+      <div className="relative bg-black min-h-screen text-white">
+        <div className="max-w-7xl mx-auto px-6 py-10 pb-28">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <img
+              src={selectedCard.img}
+              alt={selectedCard.title}
+              // Added subtle gold border
+              className="w-full h-[450px] object-cover rounded-xl shadow-lg border-2 border-yellow-700/30"
+            />
 
-        <div className="grid lg:grid-cols-2 gap-10">
-          <img
-            src={selectedCard.img}
-            alt={selectedCard.title}
-            className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover rounded-3xl"
-          />
+            <div className="flex flex-col justify-center gap-6">
+              <h1 className="text-4xl font-bold text-white">
+                {selectedCard.title}
+              </h1>
 
-          <div className="flex flex-col justify-center gap-4">
-            <h1 className="text-3xl lg:text-4xl font-bold">
-              {selectedCard.title}
-            </h1>
+              {/* Gold price text */}
+              <p className="text-3xl font-semibold text-yellow-500">
+                {selectedCard.price}
+              </p>
 
-            <p className="text-2xl text-green-600 font-semibold">
-              {selectedCard.price}
-            </p>
+              <p className="flex items-center gap-3 text-gray-400 text-lg">
+                <FaLocationDot className="text-yellow-600" />
+                {selectedCard.location}
+              </p>
 
-            <p className="text-gray-600">
-              📍 {selectedCard.location}
-            </p>
+              <div className="flex gap-10 text-lg font-medium mt-4 text-gray-300">
+                <span>🛏 {selectedCard.beds} Beds</span>
+                <span>🛁 {selectedCard.baths} Baths</span>
+              </div>
 
-            <div className="flex gap-6 mt-4 text-lg">
-              <span>🛏 {selectedCard.beds} Beds</span>
-              <span>🛁 {selectedCard.baths} Baths</span>
+              <button 
+                // Gold button styling
+                className="mt-8 w-fit px-10 py-4 bg-yellow-500 text-black rounded-lg hover:bg-yellow-400 transition font-semibold">
+                Contact Agent
+              </button>
             </div>
-
-            <button className="mt-6 w-full sm:w-fit px-8 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition">
-              Contact Agent
-            </button>
           </div>
+        </div>
+
+        {/* 🔽 BOTTOM BACK BUTTON (Styled for gold theme) */}
+        <div className="fixed bottom-4 left-0 right-0 z-50 flex justify-center">
+          <button
+            onClick={() => setSelectedCard(null)}
+            // Dark button with gold hover
+            className="flex items-center gap-3 px-8 py-4 rounded-full
+                       bg-gray-800 text-white shadow-xl
+                       hover:bg-gray-700 hover:text-yellow-400 transition"
+          >
+            <FaArrowLeft />
+            Back to listings
+          </button>
         </div>
       </div>
     );
@@ -130,32 +143,56 @@ function PropertyList() {
 
   /* ================= CARDS VIEW ================= */
   return (
-  <div>
-      <div className="w-full py-12 px-6 lg:px-16">
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {properties.map((property, index) => (
-          <div
-            key={index}
-            onClick={() => setSelectedCard(property)}
-            className="cursor-pointer bg-white rounded-2xl shadow hover:shadow-xl transition overflow-hidden"
-          >
-            <img
-              src={property.img}
-              alt={property.title}
-              className="w-full h-64 object-cover"
-            />
+    // Main background set to black/dark gray
+    <div className="bg-black">
+      <div className="max-w-7xl mx-auto px-6 py-14">
+        <h2 className="text-3xl font-bold mb-10 text-center text-white">
+          Properties in <span className="text-yellow-500">Afghanistan</span>
+        </h2>
 
-            <div className="p-5">
-              <h3 className="text-lg font-semibold">{property.title}</h3>
-              <p className="text-xl font-bold">{property.price}</p>
-              <p className="text-gray-500 text-sm">{property.location}</p>
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+          {properties.map((property, index) => (
+            <div
+              key={index}
+              onClick={() => setSelectedCard(property)}
+              // Dark cards with a subtle border and gold hover effect
+              className="group cursor-pointer bg-gray-900 rounded-xl overflow-hidden shadow-lg border border-gray-800 hover:shadow-yellow-500/30 transition duration-300"
+            >
+              <div className="relative overflow-hidden">
+                <img
+                  src={property.img}
+                  alt={property.title}
+                  className="w-full h-64 object-cover group-hover:scale-110 transition duration-500"
+                />
+                {/* Gold price tag */}
+                <span className="absolute top-4 left-4 bg-yellow-500 text-black px-4 py-1 rounded-full text-sm font-semibold">
+                  {property.price}
+                </span>
+              </div>
+
+              <div className="p-6 space-y-2">
+                <h3 className="text-lg font-semibold text-white">
+                  {property.title}
+                </h3>
+
+                <p className="flex items-center gap-2 text-gray-400 text-sm">
+                  <FaLocationDot className="text-yellow-600" />
+                  {property.location}
+                </p>
+
+                <div className="flex justify-between text-sm font-medium pt-2 text-gray-300">
+                  <span>🛏 {property.beds} Beds</span>
+                  <span>🛁 {property.baths} Baths</span>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+      
+      {/* Foter uses the black and gold theme */}
+      <Foter />
     </div>
-      <Foter/>
-  </div>
   );
 }
 

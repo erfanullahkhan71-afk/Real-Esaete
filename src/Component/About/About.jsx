@@ -1,16 +1,15 @@
 import React from "react";
-import Foter from "../Footer/Foter";
-
-
+import Foter from "../Footer/Foter"; // Assuming Foter is in the correct path
 
 function About() {
   return (
-    <div className="w-full min-h-screen bg-gray-50">
+    // Changed main background to black/dark gray
+    <div className="w-full min-h-screen bg-gray-900 text-white">
 
       {/* Hero Section */}
-      <section className="bg-green-600 text-white py-20 px-8 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">About EverGreen Real Estate</h1>
-        <p className="text-lg md:text-xl max-w-2xl mx-auto">
+      <section className="bg-gray-950 text-white py-20 px-8 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">About <span className="text-yellow-500">Luxury Estates</span></h1>
+        <p className="text-lg md:text-xl max-w-2xl mx-auto text-gray-400">
           We help people find their dream homes with ease and confidence. Our team is dedicated to providing the best real estate experience.
         </p>
       </section>
@@ -21,35 +20,35 @@ function About() {
           
           {/* Text Section */}
           <div>
-            <h2 className="text-3xl font-bold text-green-700 mb-4">Our Mission</h2>
-            <p className="text-gray-700 mb-6">
+            <h2 className="text-3xl font-bold text-yellow-500 mb-4">Our Mission</h2>
+            <p className="text-gray-300 mb-6">
               To connect families and individuals with homes that truly match their lifestyle and needs. We prioritize honesty, transparency, and top-notch service.
             </p>
 
-            <h2 className="text-3xl font-bold text-green-700 mb-4">Our Vision</h2>
-            <p className="text-gray-700">
+            <h2 className="text-3xl font-bold text-yellow-500 mb-4">Our Vision</h2>
+            <p className="text-gray-300">
               To be the leading real estate agency known for excellence, innovation, and customer satisfaction.
             </p>
           </div>
 
-          {/* Image */}
+          {/* Image (Bordered in a subtle gold tone) */}
           <div>
             <img
               src="/img6.jpg"
               alt="Real Estate"
-              className="rounded-xl shadow-lg"
+              className="rounded-xl shadow-lg border-2 border-yellow-700/30"
             />
           </div>
         </div>
       </section>
 
       {/* Team Section */}
-      <section className="bg-gray-100 py-20 px-8 md:px-20">
-        <h2 className="text-3xl font-bold text-center text-green-700 mb-12">Meet Our Team</h2>
+      <section className="bg-gray-950 py-20 px-8 md:px-20">
+        <h2 className="text-3xl font-bold text-center text-yellow-500 mb-12">Meet Our Team</h2>
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
 
-          {/* Team Card Component */}
+          {/* Team Card Component (Styled for dark mode) */}
           {[
             {
               name: "John Doe",
@@ -70,15 +69,16 @@ function About() {
               desc: "Bringing our brand to life and connecting with clients online."
             }
           ].map((member, index) => (
-            <div key={index} className="bg-white rounded-xl shadow-lg p-6 text-center">
+            <div key={index} className="bg-gray-800 rounded-xl shadow-lg p-6 text-center border border-gray-700">
               <img
                 src={member.img}
                 alt={member.name}
-                className="w-32 h-32 mx-auto rounded-full mb-4"
+                // Image border changed to match theme
+                className="w-32 h-32 mx-auto rounded-full mb-4 border-4 border-yellow-700/50"
               />
-              <h3 className="text-xl font-bold text-gray-800">{member.name}</h3>
-              <p className="text-green-600 font-medium mb-2">{member.role}</p>
-              <p className="text-gray-600">{member.desc}</p>
+              <h3 className="text-xl font-bold text-white">{member.name}</h3>
+              <p className="text-yellow-500 font-medium mb-2">{member.role}</p>
+              <p className="text-gray-400">{member.desc}</p>
             </div>
           ))}
 
@@ -86,13 +86,16 @@ function About() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 px-8 text-center bg-green-600 text-white">
+      <section className="py-20 px-8 text-center bg-black text-white">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">Looking for Your Dream Home?</h2>
-        <p className="mb-8 text-lg md:text-xl max-w-2xl mx-auto">
+        <p className="mb-8 text-lg md:text-xl max-w-2xl mx-auto text-gray-400">
           Contact us today and let our team guide you to the perfect property!
         </p>
+        {/* You may want to add a button here styled like your other gold buttons */}
       </section>
-  <Foter/>
+      
+      {/* Footer is already styled in Black & Gold from previous prompt */}
+      <Foter/>
     </div>
   );
 }

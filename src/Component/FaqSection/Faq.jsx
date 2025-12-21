@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+// Using icons that fit a luxury aesthetic
+import { Gem, Home, Phone, MapPin, ChevronRight, ChevronDown } from 'lucide-react'; 
 
 // FAQ Data
 const faqsData = [
@@ -41,78 +43,96 @@ function Faq() {
   };
 
   return (
-    <div className="w-full bg-gray-50 py-20 px-4 md:px-20 space-y-20">
+    // Main container with a deep black background
+    <div className="w-full bg-black text-white py-24 px-4 md:px-12 lg:px-20 space-y-24">
 
       {/* FAQ SECTION */}
-      <section>
-        <h2 className="text-4xl font-extrabold text-center mb-16">
-          Frequently Asked Questions
+      <section className="max-w-6xl mx-auto">
+        <h2 className="text-5xl font-extrabold text-center mb-16 text-yellow-500 tracking-wider">
+          FREQUENTLY ASKED QUESTIONS
         </h2>
 
-        <div className="md:flex gap-16">
+        <div className="md:flex gap-12">
           {/* FAQ LIST */}
-          <div className="md:w-2/3 space-y-4">
+          <div className="md:w-2/3 space-y-5">
             {faqsData.map((faq, i) => (
-              <div key={i} className="bg-white p-6 rounded-xl shadow">
+              // Sleek dark gray cards with gold border on hover/active
+              <div key={i} className="bg-gray-900 p-6 rounded-lg shadow-xl border border-gray-800 hover:border-yellow-600 transition duration-300">
                 <button
                   onClick={() => toggleFaq(i)}
-                  className="flex justify-between w-full text-left"
+                  className="flex justify-between items-center w-full text-left focus:outline-none"
                 >
-                  <h3 className="font-semibold">{faq.question}</h3>
-                  <span>{openFaqIndex === i ? "−" : "+"}</span>
+                  <h3 className="font-semibold text-white">{faq.question}</h3>
+                  <span className="text-yellow-500">
+                    {openFaqIndex === i ? <ChevronDown className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
+                  </span>
                 </button>
 
                 {openFaqIndex === i && (
-                  <p className="mt-4 text-gray-600">{faq.answer}</p>
+                  <p className="mt-4 text-gray-300 border-t border-gray-700 pt-4 mt-4">{faq.answer}</p>
                 )}
               </div>
             ))}
           </div>
 
-          {/* IMAGE */}
-          <div className="md:w-1/3 mt-10 md:mt-0">
+          {/* IMAGE (Stylized with luxury details) */}
+          <div className="md:w-1/3 mt-10 md:mt-0 relative">
             <img
               src="/download (14).jpeg"
               alt="Property"
-              className="rounded-2xl shadow-xl w-full h-80 object-cover"
+              className="rounded-xl shadow-2xl w-full h-96 object-cover border border-yellow-700/50"
             />
-          </div>
-        </div>
-      </section>
-      {/* TESTIMONIAL */}
-      <section class="bg- py-16">
-  
-        <h3 class="text-5xl font-extrabold text-center mb-16 text-gray-800 tracking-tight">
-          TESTIMONIALS
-        </h3>
-
-        <div class="flex justify-center px-4">
-          <div class="bg-green-700 p-10 rounded-3xl shadow-2xl max-w-2xl text-white relative">
-            
-            {/* Quotation Marks */}
-            <span class="absolute top-4 left-4 text-white text-6xl font-serif opacity-75">“</span>
-            <span class="absolute bottom-4 right-4 text-white text-6xl font-serif opacity-75">”</span>
-
-            {/* Image and Text Container */}
-            <div class="flex flex-col items-center text-center">
-                <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    class="w-40 h-40 rounded-full object-cover border-4 border-white shadow-lg mb-6"
-                />
-
-                <div>
-                    <p class="text-lg mb-6 leading-relaxed">
-                        I really like the dresses from the Borcelle Boutique. Nice design, feminine color, soft and comfortable material in addition, at an affordable price I can get a dress with good quality like this. Borcelle is special, thank you.
-                    </p>
-                    <p class="font-bold text-xl">{testimonial.name}</p>
-                    <p class="text-green-300 text-sm">{testimonial.role}</p>
-                </div>
+            {/* Added a subtle gold accent overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent rounded-xl"></div>
+            <div className="absolute bottom-4 left-4 text-white p-4">
+                <p className="text-2xl font-bold text-yellow-500 flex items-center">
+                    <Home className="w-6 h-6 mr-3"/>
+                    Luxury Living
+                </p>
+                <p className="text-sm text-gray-300">Discover properties that define excellence.</p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* TESTIMONIAL (Redesigned for maximum luxury effect) */}
+      <section className="py-16 max-w-6xl mx-auto">
+  
+        <h3 className="text-5xl font-extrabold text-center mb-16 text-white">
+          CLIENT <span className="text-yellow-500">EXPERIENCE</span>
+        </h3>
+
+        <div className="flex justify-center px-4">
+          {/* A prominent, dark testimonial card with strong gold highlights */}
+          <div className="bg-gray-900 p-10 rounded-2xl shadow-2xl max-w-3xl text-white relative overflow-hidden">
+            
+            {/* Quotation mark in gold in the background */}
+            <span className="absolute top-4 right-4 text-yellow-900 text-9xl font-serif opacity-30">”</span>
+
+            {/* Content Container */}
+            <div className="flex flex-col items-center text-center relative z-10">
+                <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    // A bold gold border around the image
+                    className="w-32 h-32 rounded-full object-cover border-4 border-yellow-600 shadow-lg mb-6"
+                />
+
+                <div>
+                    <p className="text-xl mb-6 leading-relaxed italic text-gray-200">
+                        "{testimonial.feedback}"
+                    </p>
+                    <p className="font-bold text-2xl text-yellow-500">{testimonial.name}</p>
+                    <p className="text-gray-500 text-md">{testimonial.role}</p>
+                    <p className="text-gray-600 text-xs mt-4 flex items-center justify-center">
+                        <Gem className="w-4 h-4 mr-2 text-yellow-500"/>
+                        {testimonial.reviews}
+                    </p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
