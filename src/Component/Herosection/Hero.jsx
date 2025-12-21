@@ -55,7 +55,7 @@ function Hero() {
           <Link
             to="/contact"
             className="px-8 py-3 rounded-lg font-bold border border-yellow-500
-            hover:bg-gray-800 transition"
+            hover:bg-yellow-400 transition"
           >
             Contact Agent
           </Link>
